@@ -1,0 +1,43 @@
+#include <stdio.h>
+struct TIME
+{
+   int seconds;
+   int minutes;
+   int hours;
+};
+ 
+void differenceinTimePeriod(struct TIME t1, struct TIME t2,struct TIME *diff);
+ 
+int main()
+{
+   struct TIME Time1, Time2, diff;
+   printf("Enter the Time 1. \n");
+   printf("Enter hours, minutes and seconds: ");
+   scanf("%d %d %d", &Time1.hours,&Time1.minutes,&Time1.seconds);
+ 
+   printf("Enter the Time 2. \n");
+   printf("Enter hours, minutes and seconds: ");
+   scanf("%d %d %d", &Time2.hours, &Time2.minutes, &Time2.seconds);
+  // Difference between start and stop time
+   differenceinTimePeriod(Time1, Time2, &diff);
+   printf("\nTime Difference:- %d:%d:%d - ", Time1.hours,Time1.minutes, Time1.seconds);
+   printf("%d:%d:%d ", Time2.hours,Time2.minutes,Time2.seconds);
+   printf("= %d:%d:%d\n", diff.hours, diff.minutes, diff.seconds);
+   return 0;
+}
+// Computes difference between time periods
+void differenceinTimePeriod(struct TIME first,struct TIME second,struct TIME *diff) {
+   while (second.seconds > first.seconds) 
+   {
+       --first.minutes;
+      first.seconds += 60;
+   }
+   diff->seconds = first.seconds - second.seconds;
+   while (second.minutes > first.minutes) 
+   {
+      --first.hours;
+      first.minutes += 60;
+   }
+   diff->minutes = first.minutes - second.minutes;
+   diff->hours = first.hours - second.hours;
+}
