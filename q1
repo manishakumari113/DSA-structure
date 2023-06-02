@@ -1,0 +1,39 @@
+#include<stdio.h>
+struct employee
+{
+int id;
+char name[20];
+int salary;
+char designation[20];
+}employee[10];
+int main()
+{
+int i,high,n;
+printf("Enter number of employees\n ");
+scanf("%d",&n);
+printf("Enter details for %d employees:\n",n);
+for(i=0;i<n;i++)
+{
+printf("Employee ID: ");
+scanf("%d",&employee[i].id);
+printf("Name  : ");
+scanf("%s",employee[i].name);
+printf("Salary  : ");
+scanf("\n %d",&employee[i].salary);
+printf("Designation  : ");
+scanf("\n %s",employee[i].designation);
+}
+high=employee[0].salary;
+for(i=0;i<n;i++)
+{
+if(employee[i].salary>high)
+high=employee[i].salary;
+}
+printf("Highest salary employee details:\n");
+for(i=0;i<n;i++)
+{
+if(employee[i].salary==high)
+printf("\n %d %s %d %s",employee[i].id,employee[i].name,employee[i].salary,employee[i].designation);
+}
+return 0;
+}
