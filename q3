@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct employee
+{
+char name[20];
+char gender;
+char designation[20];
+int basicsalary;
+};
+int main()
+{
+// struct employee e[100];
+struct employee *ptr;
+int n;
+float DA,HR;
+float Gross_salary;
+printf("Enter the number of employee: \n");
+scanf("%d",&n);
+ptr=(struct employee*)malloc(n*sizeof(struct employee));
+for(int i=0;i<n;i++)
+{
+printf("Enter the Employee name\n");
+scanf("%s",(ptr+i)->name);
+printf("Enter the Employee gender\n");
+scanf("%s",&(ptr+i)->gender);
+printf("Enter the employee designation\n");
+scanf("%s",(ptr+i)->designation);
+printf("Enter the basic salary of the employee\n");
+scanf("%d",&(ptr+i)->basicsalary);
+}
+for(int k=0;k<n;k++)
+{
+DA=7.5*((ptr+k)->basicsalary);
+HR=2.5*((ptr+k)->basicsalary);
+Gross_salary=(ptr+k)->basicsalary+DA+HR;
+printf("DA OF EMPLOYEE %d : %f\n",k+1,DA);
+printf("HR OF EMPLOYEE %d : %f\n",k+1,HR);
+printf("gross_salary OF EMPLOYEE %d : %f\n",k+1,Gross_salary);
+printf("\n");
+}
+printf("The Employee data's are as follows\n");
+for(int j=0;j<n;j++)
+{
+printf("EMPLOYEE %d NAME: %s\n",j+1,((ptr+j)->name));
+  printf("EMPLOYEE %d gender: %c\n",j+1,((ptr+j)->gender));
+   printf("EMPLOYEE %d designation: %s\n ",j+1,((ptr+j)->designation));
+printf("EMPLOYEE'S %d SALARY: %d\n\n\n",j+1,((ptr+j)->basicsalary));
+}
+return 0;
+}
